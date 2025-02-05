@@ -1,7 +1,7 @@
 package maquina_snack;
 import java.io.Serializable;
 
-//Uso de javabeans, omponentes reutilizables en Java que se
+//Uso de javabeans, componentes reutilizables en Java que se
 //utilizan para encapsular datos y comportamientos en aplicaciones
 public class Snack implements Serializable {
     //Atributos
