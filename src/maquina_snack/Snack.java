@@ -55,6 +55,7 @@ public class Snack implements Serializable {
                 '}';
     }
 
+    //quals: Compara si dos objetos son iguales según los campos idSnack, nombre y precio.
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -62,6 +63,7 @@ public class Snack implements Serializable {
         return idSnack == snack.idSnack && Double.compare(precio, snack.precio) == 0 && Objects.equals(nombre, snack.nombre);
     }
 
+    //hashCode: Devuelve un valor hash consistente con la implementación de equals, utilizando los mismos campos para generar el valor hash.
     @Override
     public int hashCode() {
         return Objects.hash(idSnack, nombre, precio);
