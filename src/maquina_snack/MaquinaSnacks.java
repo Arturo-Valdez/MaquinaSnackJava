@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class MaquinaSnacks {
     public static void main(String[] args) {
-        maquinaSnacks();
+        maquinaSnacks();//Inicializacion de proyecto maquinaSnacks
     }
 
     private static void maquinaSnacks() {
@@ -36,8 +37,35 @@ public class MaquinaSnacks {
         var salir = false;
         switch (opcion){
             case 1 -> comprarSnack(consola,productos);
+            case 2 -> mostrarTicket(productos);
+            case 3 -> agregarSnack(consola);
+            case 4 -> {
+                System.out.println("Regresa pronto!!!...");
+                salir = true;
+            }
         }
         return salir;
+    }
+
+    private static void agregarSnack(Scanner consola){
+        System.out.print("Ingrese nombre del nuevo snack: ");
+        var nombre = consola.nextLine();
+        System.out.print("Ingrese el precio del snack: ");
+        var precio = Double.parseDouble(consola.nextLine());
+        Snacks.agregarSnack(new Snack(nombre, precio));
+        System.out.println("Tu snack se ha agregado correctamente");
+        Snacks.mostrarSacks();
+    }
+
+    private static void mostrarTicket(List<Snack> productos) {
+        var ticket = "*** Ticket de Venta ***";
+        var total = 0.0;
+        for (var producto : productos){
+            ticket += "\n\t+" + producto.getNombre() + " - $" + producto.getPrecio();
+            total += producto.getPrecio();
+        }
+        ticket += "\n\tTotal -> $" + total;
+        System.out.println(ticket);
     }
 
     private static void comprarSnack(Scanner consola, List<Snack> productos) {
@@ -60,7 +88,7 @@ public class MaquinaSnacks {
     }
 
     private static int mostrarMenu(Scanner consola) {
-        System.out.println("""
+        System.out.print("""
                 Menu:
                 1. Comprar Snack
                 2. Mostrar ticket
